@@ -104,12 +104,11 @@ const (
 // height float64 — рост пользователя.
 func WalkingSpentCalories(action int, duration, weight, height float64) float64 {
 	// Получаем среднюю скорость в метрах в секунду
-	averageSpeedMetersPerSecond := meanSpeed(action, duration*60)
+	averageSpeedMetersPerSecond := meanSpeed(action, duration) / 3600
 
 	// Рассчитываем потраченные калории.
-	caloriesBurned := ((walkingCaloriesWeightMultiplier * weight) +
-		(math.Pow(averageSpeedMetersPerSecond, 2) / height) *
-			walkingSpeedHeightMultiplier * weight) * duration * 60
+	caloriesBurned := ((walkingCaloriesWeightMultiplier * weight) + (math.Pow(averageSpeedMetersPerSecond, 2) / height) *
+			walkingSpeedHeightMultiplier * weight) * duration * minInH
 
 	return caloriesBurned
 }
