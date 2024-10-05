@@ -107,8 +107,8 @@ func WalkingSpentCalories(action int, duration, weight, height float64) float64 
 	averageSpeedMetersPerSecond := meanSpeed(action, duration) / 3600
 
 	// Рассчитываем потраченные калории.
-	caloriesBurned := ((walkingCaloriesWeightMultiplier * weight) + (math.Pow(averageSpeedMetersPerSecond, 2) / height) *
-			walkingSpeedHeightMultiplier * weight) * duration * minInH
+	caloriesBurned := (walkingCaloriesWeightMultiplier * weight + 
+        (math.Pow(averageSpeedMetersPerSecond, 2) / height) * walkingSpeedHeightMultiplier * weight) * duration * minInH
 
 	return caloriesBurned
 }
